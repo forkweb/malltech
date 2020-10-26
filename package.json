@@ -12,6 +12,7 @@
     "sass": "^1.27.0",
     "sass-loader": "^10.0.4",
     "vue": "^2.6.11",
+    "vue-qrcode-reader": "^2.3.14",
     "vue-select": "^3.10.8"
   },
   "devDependencies": {

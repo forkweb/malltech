@@ -83,9 +83,30 @@ input:active, input:focus { outline: none; }
             left: 5px;
             top: 5px;
             font-size: 12px;
+            width: 100%;
           }
           &-choose{
             font-size: 12px;
+          }
+        }
+        &__scaner {
+          &-click {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            margin-top: 25px;
+            position: relative;
+            p {
+              position: absolute;
+              z-index: 1;
+              width: 65%;
+              top: 115px;
+              font-size: 12px;
+              line-height: 1.4;
+            }
+            img {
+              cursor: pointer;
+            }
           }
         }
       }
