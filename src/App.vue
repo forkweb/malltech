@@ -1,6 +1,20 @@
 <template>
   <div id="app">
-    <Planeta></Planeta>
+    <div class="site">
+      <div class="container container-mobile">
+        <div class="nav">
+          <div class="nav-logo"><img src="./assets/logo.png" alt=""></div>
+          <div class="nav-menu">
+            <div class="nav-menu__hamburger">
+              <img src="./assets/hamburger.png" alt="">
+            </div>	  
+          </div>
+        </div>
+        <div class="content">
+          <Planeta/>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -11,6 +25,9 @@ export default {
   name: 'App',
   components: {
     Planeta
+  },
+  computed() {
+    
   }
 }
 </script>

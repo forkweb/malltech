@@ -1,1 +1,96 @@
 @import "~@/style/normalize.css";
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap');
+
+a:active, a:focus { outline: none; }
+input:active, input:focus { outline: none; }
+
+.site {
+  font-family: 'Montserrat', sans-serif;
+  .container {
+    margin: 0 auto;
+    position: relative;
+    width: 1280px;
+    &-mobile {
+      width: 320px;
+      box-sizing: border-box;
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 10px;
+      border-bottom: 1px solid rgb(236 239 241);
+      &-menu {
+        &__hamburger {
+          cursor: pointer;
+        }
+      }
+    }
+    .content {
+      padding: 0 15px;
+      .planeta-qr {
+        padding-top: 25px;
+        &__title {
+          font-weight: 700;
+        }
+        &__market {
+          .vs__search {
+            width: 100%;
+            border: none;
+            border-bottom: 2px solid rgb(0 0 0);
+            padding: 5px 10px;
+            cursor: pointer;
+          }
+          .vs__clear {
+            display: none;
+          }
+          .v-select {
+            position: relative;
+            margin-top: 5px;
+            ::placeholder {
+              font-size: 12px;
+            }
+          }
+          .vs__actions {
+            position: absolute;
+            right: 10px;
+            top: 4px;
+          }
+          .vs__open-indicator {
+            transition-duration: 0.3s;
+          }
+          .vs--open {
+            border: 2px solid black;
+            .vs__selected {
+              opacity: 0;
+            }
+            .vs__open-indicator {
+              transform: rotate(180deg);
+            }
+          }
+          #vs1__listbox {
+            list-style: none;
+            padding-left: 10px;
+            li {
+              padding: 5px 0px;
+              cursor: pointer;
+              font-size: 12px;
+            }
+          }
+          .vs__selected {
+            position: absolute;
+            left: 5px;
+            top: 5px;
+            font-size: 12px;
+          }
+          &-choose{
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
