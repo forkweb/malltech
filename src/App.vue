@@ -13,6 +13,20 @@
         <div class="content">
           <Planeta/>
         </div>
+        <div class="footer">
+          <div class="footer-title">ТРЦ «Планета»</div>
+
+          <div class="footer-contact">
+            <p>г. Красноярск, ул. 9 Мая, 77</p>
+            <p><a href="tel:+73912771771">+7 (391) 2-771-771</a></p>
+          </div>
+
+          <div class="footer-information">
+            <a href="">Информация об акции и условиях участия</a>
+            <a href="">Политика в отношении обработки персональных данных</a>
+          </div>
+
+        </div>
       </div>
     </div>
   </div>
