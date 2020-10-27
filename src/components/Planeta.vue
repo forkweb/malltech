@@ -24,8 +24,8 @@
           <p class="decode-result">Результат: <b>{{ decodedContent }} {{ errorMessage }}</b></p>
         </div>
         <div class="planeta-qr__scaner-information" v-if="scanerInfo==true">
-          Дата покупки
-          Сумма покупки
+          Дата покупки {{dates}}
+          Сумма покупки {{summ}}
         </div>
       </div>
 
@@ -96,15 +96,20 @@ export default {
         this.decodedContent = promise;
         this.scanerInfo = true;
 
+        let objqr = eval('({obj:[' + this.decodedContent + ']})');
+        this.dates = objqr.obj[0].dates;
+        this.summ = objqr.obj[0].summ;
+
         // let rrr = this.decodedContent.toJSON();
         // let value = JSON.parse(rrr);
         // console.log(value);
 
-        let info = [];
-        let qrinfo = new Object();
-        qrinfo = this.decodedContent
-        info.push(qrinfo);
-        console.log(info);
+        // let info = [];
+        // let qrinfo = new Object();
+        // qrinfo = this.decodedContent
+        // info.push(qrinfo);
+        // console.log(info);
+ 
 
 
         // let arr = new Array();
@@ -113,11 +118,10 @@ export default {
         // console.log(arr);
 
         // let dataQR = [{dates: '4', summ: 'Other'}];
-        
-         
 
-        // let parse_result = info.map(parseDates => {
-        //   return parseDates.resultScan.dates;
+
+        // let parse_result = objqr.map(parseDates => {
+        //   return parseDates.obj[0].dates;
         // });
         // console.log(parse_result);
 
