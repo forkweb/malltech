@@ -9,11 +9,13 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "moment": "^2.29.1",
     "sass": "^1.27.0",
     "sass-loader": "^10.0.4",
     "vue": "^2.6.11",
     "vue-qrcode-reader": "^2.3.14",
-    "vue-select": "^3.10.8"
+    "vue-select": "^3.10.8",
+    "vuejs-datepicker": "^1.6.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

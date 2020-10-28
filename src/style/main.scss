@@ -40,6 +40,7 @@ button:active, button:focus { outline: none; }
           font-weight: 700;
         }
         &__market {
+          padding-bottom: 45px;
           .vs__search {
             width: 100%;
             border: none;
@@ -95,6 +96,10 @@ button:active, button:focus { outline: none; }
           }
         }
         &__scaner {
+          width: 180px;
+          height: 180px;
+          margin: 0 auto;
+          margin-top: 40px;
           &-click {
             display: flex;
             justify-content: center;
@@ -123,15 +128,6 @@ button:active, button:focus { outline: none; }
             transform: translate(-50%, -50%);
             right: -15px;
           }
-        }
-        &__control {
-          margin-top: 35px;
-        }
-        &__scaner {
-          width: 180px;
-          height: 180px;
-          margin: 0 auto;
-          margin-top: 40px;
           .qrcode-stream-wrapper {
             width: 180px;
             height: 180px;
@@ -149,6 +145,60 @@ button:active, button:focus { outline: none; }
             margin-left: -13px;
             margin-top: -11px;
           }
+          &-information {
+            margin-top: 55px;
+            &__form {
+              margin-bottom: 10px;
+              .planeta-input {
+                width: 100%;
+                border: none;
+                border-bottom: 2px solid rgb(0 0 0);
+                padding: 5px 0;
+                &:first-child {
+                  margin-top: 0px;
+                }
+                &__error {
+                  color: rgb(255 0 0);
+                  width: 100%;
+                  display: flex;
+                  font-size: 10px;
+                  padding-top: 10px;
+                }
+              }
+              .vdp-datepicker {
+                &::after {
+                  content: url(~@/assets/date_icon.png);
+                  position: absolute;
+                  right: 0;
+                  top: 10px;
+                  pointer-events: none;
+                }
+                &-label {
+                  color: rgb(255 0 0);
+                }
+                input {
+                  width: 100%;
+                  border: none;
+                  border-bottom: 2px solid rgb(0 0 0);
+                  padding: 5px 0;
+                  color: rgb(255 0 0);
+                }
+              }
+              
+              label {
+                font-size: 12px;
+                font-weight: 600;
+              }
+              input {
+                margin-top: 10px;
+                font-size: 12px;
+              }
+            }
+          }
+
+        }
+        &__control {
+          margin-top: 35px;
         }
       }
     }

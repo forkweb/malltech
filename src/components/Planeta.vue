@@ -24,13 +24,32 @@
           </qrcode-stream>
           <!-- <p class="decode-result">Результат: <b>{{ decodedContent }} {{ errorMessage }}</b></p> -->
         </div>
-        <div class="planeta-qr__scaner-information" v-if="scanerInfo==true">
-          Дата покупки {{dates}}
-          Сумма покупки {{summ}}
-        </div>
+
       </div>
 
-      <div class="planeta-qr__control">
+      <div class="planeta-qr__scaner-information" v-if="scanerInfo==true">
+
+    
+          
+          <div class="planeta-qr__scaner-information__form">
+            <label class="vdp-datepicker-label">Дата покупки*</label>
+            <!-- <input class="planeta-input" type="text" :value="dates"> -->
+            <datepicker  placeholder="Дата покупки" :value="dates" :format="customFormatter"></datepicker>
+            <span class="planeta-input__error">Дата покупки не соответствует условиям акции.</span>
+          </div>
+
+          <div class="planeta-qr__scaner-information__form">
+            <label>Сумма покупки*</label>
+            <input class="planeta-input" type="text" :value="summ">
+          </div>
+
+
+<!-- 
+          Дата покупки {{dates}}
+          Сумма покупки {{summ}} -->
+        </div>
+
+      <div class="planeta-qr__control" v-if="showScaner==false">
         <button class="btn btn-disable">ВВЕСТИ данные из чека</button>
       </div>
 
@@ -42,11 +61,15 @@
 <script>
 import vSelect from "vue-select";
 import {QrcodeStream} from "vue-qrcode-reader";
+import Datepicker from 'vuejs-datepicker';
+import moment from 'moment';
+
 
 export default {
   components: {
     vSelect,
-    QrcodeStream
+    QrcodeStream,
+    Datepicker
   },
   data() {
     return {
@@ -63,15 +86,24 @@ export default {
       loading: false,
       scanerInfo: false,
       dates: '',
-      summ: ''
+      summ: '',
+      datepickernew: ''
     }
   },
   watch: {
-    // onDecode(){
-    //   this.onDecode;
-    // }
+    // datepickernew() {
+    //   var state = {
+    //     date: new Date(2016, 9,  16)
+    //   };
+    // },
   },
   methods: {
+
+    customFormatter(date) {
+      return moment(date).format('DD-MM-yyy');
+      // return moment(date).format('MMMM Do YYYY, h:mm:ss a');
+    },
+
     async onInit (promise) {
       this.loading = true
       try {
@@ -98,69 +130,25 @@ export default {
         this.scanerInfo = true;
 
         let objqr = eval('({obj:[' + this.decodedContent + ']})');
-        this.dates = objqr.obj[0].dates;
+        // this.dates = objqr.obj[0].dates;
         this.summ = objqr.obj[0].summ;
 
-        // let rrr = this.decodedContent.toJSON();
-        // let value = JSON.parse(rrr);
-        // console.log(value);
 
-        // let info = [];
-        // let qrinfo = new Object();
-        // qrinfo = this.decodedContent
-        // info.push(qrinfo);
-        // console.log(info);
- 
+      var st = objqr.obj[0].dates;
+      var pattern = /(\d{2})\.(\d{2})\.(\d{4})/;
+      var dt = new Date(st.replace(pattern,'$3-$2-$1'));
+      this.dates = dt;
 
-
-        // let arr = new Array();
-        // let stroke = JSON.stringify(this.decodedContent);
-        // arr.push(stroke);
-        // console.log(arr);
-
-        // let dataQR = [{dates: '4', summ: 'Other'}];
-
-
-        // let parse_result = objqr.map(parseDates => {
-        //   return parseDates.obj[0].dates;
-        // });
-        // console.log(parse_result);
-
+       
       }
     } catch (error) {
         this.decodedContent = "Ошибка";
       }
     },
 
-    // onDecode(content) {
-    //   this.decodedContent = content;
-    // },
-
-    // onInit(promise) {
-    //   promise.then(() => {
-    //     console.log('Successfully initilized! Ready for scanning now!');
-    //     this.loading = true
-    //   })
-    //     .catch(error => {
-    //     if (error.name === 'NotAllowedError') {
-    //       this.errorMessage = 'Hey! I need access to your camera'
-    //     } else if (error.name === 'NotFoundError') {
-    //       this.errorMessage = 'Do you even have a camera on your device?'
-    //     } else if (error.name === 'NotSupportedError') {
-    //       this.errorMessage = 'Seems like this page is served in non-secure context (HTTPS, localhost or file://)'
-    //     } else if (error.name === 'NotReadableError') {
-    //       this.errorMessage = 'Couldn\'t access your camera. Is it already in use?'
-    //     } else if (error.name === 'OverconstrainedError') {
-    //       this.errorMessage = 'Constraints don\'t match any installed camera. Did you asked for the front camera although there is none?'
-    //     } else {
-    //       this.errorMessage = 'UNKNOWN ERROR: ' + error.message
-    //     }
-    //   })
-    // },
-
     qrscan() {
       this.showScaner = true;
-    }
+    },
   },
   // computed() {
   //   return {
@@ -168,7 +156,7 @@ export default {
   //   }
   // },
   mounted() {
-  //  this.onDecode();
+   
   },
 }
 </script>
