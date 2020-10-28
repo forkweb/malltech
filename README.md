@@ -20,5 +20,10 @@ npm run build
 npm run lint
 ```
 
+## Имитация ошибок чтений QR code
+```
+Можете менять значение объекта content на null. На строке 163 в компоненте Planeta.vue
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
