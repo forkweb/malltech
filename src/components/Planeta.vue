@@ -17,11 +17,12 @@
         <div class="planeta-qr__scaner-qrcode" v-else>
           <!-- <qrcode-stream @decode="onDecode" @init="onInit"></qrcode-stream> -->
           <qrcode-stream @init="onInit" @decode="onDecode">
+            <img class="qr_img" src="../assets/qr_scan2.png" alt="qr_scan">
             <div class="loading-indicator" v-if="loading">
               Инициализация...
             </div>
           </qrcode-stream>
-          <p class="decode-result">Результат: <b>{{ decodedContent }} {{ errorMessage }}</b></p>
+          <!-- <p class="decode-result">Результат: <b>{{ decodedContent }} {{ errorMessage }}</b></p> -->
         </div>
         <div class="planeta-qr__scaner-information" v-if="scanerInfo==true">
           Дата покупки {{dates}}

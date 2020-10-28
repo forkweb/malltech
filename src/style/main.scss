@@ -117,14 +117,38 @@ button:active, button:focus { outline: none; }
             position: relative;
           }
           .loading-indicator {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            right: -15px;
           }
         }
         &__control {
           margin-top: 35px;
+        }
+        &__scaner {
+          width: 180px;
+          height: 180px;
+          margin: 0 auto;
+          margin-top: 40px;
+          .qrcode-stream-wrapper {
+            width: 180px;
+            height: 180px;
+            position: relative;
+            z-index: 0;
+          }
+          .qrcode-stream-overlay {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            right: 0;
+            margin-left: -13px;
+            margin-top: -11px;
+          }
         }
       }
     }
