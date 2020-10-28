@@ -48,4 +48,5 @@ export default {
 
 <style lang="scss" type="text/scss">
   @import "~@/style/main.scss";
+  @import "~@/style/adaptive.css";
 </style>

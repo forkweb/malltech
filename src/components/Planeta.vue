@@ -5,6 +5,8 @@
       <p>Регистрация чека</p>
     </div>
 
+    
+
     <div class="planeta-qr__market">
       <span class="planeta-qr__market-choose">Магазин покупки*</span>
       <v-select :options="options" :reduce="market => market.id" label="market" placeholder="Выбрать магазин"/>
@@ -186,6 +188,9 @@ export default {
        
       }
     } catch (error) {
+      if (error.name === 'StreamApiNotSupportedError') {
+          this.noStreamApiSupport = true
+      }
         this.decodedContent = "Ошибка";
         this.repeatscan = true;
         this.showScaner = false;
