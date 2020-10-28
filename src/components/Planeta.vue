@@ -43,21 +43,27 @@
             <input class="planeta-input" type="text" :value="summ">
           </div>
 
-          <div class="planeta-qr__check">
-            <file-pond
-              name="test"
-              ref="pond"
-              class-name="my-pond"
-              label-idle="Перетащите или выберите фото"
-              allow-multiple="true"
-              accepted-file-types="image/jpeg, image/png"
-              max-files="1"
-              maxFileSize="5MB"
-              v-bind:files="myFiles"
-              v-on:init="handleFilePondInit"/>
+          <div class="planeta-qr__check__upload">
+            <p class="planeta-qr__check__upload-title">Фото чека (.jpg, .png, не более 5 Мб)*</p>
+            <div class="planeta-qr__check">            
+              <file-pond
+                name="test"
+                ref="pond"
+                class-name="my-pond"
+                label-idle="Перетащите или выберите фото"
+                allow-multiple="true"
+                accepted-file-types="image/jpeg, image/png"
+                max-files="1"
+                maxFileSize="5MB"
+                v-bind:files="myFiles"
+                v-on:init="handleFilePondInit"/>
+            </div>
           </div>
 
+          <button class="btn couponregistration">Зарегистрировать купон</button>
+
         </div>
+        
 
       <div class="planeta-qr__control" v-if="showScaner==false">
         <button class="btn btn-disable">ВВЕСТИ данные из чека</button>

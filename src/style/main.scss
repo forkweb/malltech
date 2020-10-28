@@ -109,10 +109,11 @@ button:active, button:focus { outline: none; }
             p {
               position: absolute;
               z-index: 1;
-              width: 65%;
-              top: 115px;
+              width: auto;
+              top: 55%;
               font-size: 12px;
               line-height: 1.4;
+              padding: 0 10px;
             }
             img {
               cursor: pointer;
@@ -198,13 +199,49 @@ button:active, button:focus { outline: none; }
 
         }
         &__control {
-          margin-top: 35px;
+          margin-top: 70px;
         }
         &__check {
           border: 1px solid rgb(0 0 0);
           border-style: dashed;
+          position: relative;
+          cursor: pointer;
           .filepond--root.my-pond.filepond--hopper {
             height: 60px !important;
+            // margin-left: 10px;
+            label {
+              cursor: pointer;
+              padding-left: 25px;
+              font-size: 12px;
+              color: rgb(0 0 0);
+              font-family: 'Montserrat', sans-serif;
+            }
+          }
+          .filepond--drop-label {
+            background-color: rgb(255 255 255);
+          }
+          &::before {
+            content: url(~@/assets/clip_icon.png);
+            position: absolute;
+            pointer-events: none;
+            z-index: 2;
+            left: 25px;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            z-index: 20;
+          }
+          &__upload {
+            margin: 30px 0 50px 0;
+            &-title {
+              font-size: 12px;
+              font-weight: 500;
+            }
+            .filepond--panel-root {
+              background-color: transparent;
+            }
+            .filepond--item {
+              margin-left: 40px;
+            }
           }
         }
       }
@@ -218,6 +255,8 @@ button:active, button:focus { outline: none; }
     font-size: 12px;
     width: 100%;
     padding: 15px 0;
+    letter-spacing: 2px;
+    font-weight: 700;
     &-disable {
       border: 2px solid #C4C4C4;
       color: #C4C4C4;
