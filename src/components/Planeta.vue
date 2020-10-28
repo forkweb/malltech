@@ -171,6 +171,7 @@ export default {
          this.decodedContent = "Пусто";
          this.repeatscan = true;
          this.showScaner = false;
+         this.scanerInfo = false;
       } else {
         this.decodedContent = promise;
         this.scanerInfo = true;
@@ -194,6 +195,7 @@ export default {
         this.decodedContent = "Ошибка";
         this.repeatscan = true;
         this.showScaner = false;
+        this.scanerInfo = false;
       }
     },
 
