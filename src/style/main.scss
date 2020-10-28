@@ -200,6 +200,13 @@ button:active, button:focus { outline: none; }
         &__control {
           margin-top: 35px;
         }
+        &__check {
+          border: 1px solid rgb(0 0 0);
+          border-style: dashed;
+          .filepond--root.my-pond.filepond--hopper {
+            height: 60px !important;
+          }
+        }
       }
     }
   }

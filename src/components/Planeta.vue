@@ -43,10 +43,20 @@
             <input class="planeta-input" type="text" :value="summ">
           </div>
 
+          <div class="planeta-qr__check">
+            <file-pond
+              name="test"
+              ref="pond"
+              class-name="my-pond"
+              label-idle="Перетащите или выберите фото"
+              allow-multiple="true"
+              accepted-file-types="image/jpeg, image/png"
+              max-files="1"
+              maxFileSize="5MB"
+              v-bind:files="myFiles"
+              v-on:init="handleFilePondInit"/>
+          </div>
 
-<!-- 
-          Дата покупки {{dates}}
-          Сумма покупки {{summ}} -->
         </div>
 
       <div class="planeta-qr__control" v-if="showScaner==false">
@@ -64,12 +74,20 @@ import {QrcodeStream} from "vue-qrcode-reader";
 import Datepicker from 'vuejs-datepicker';
 import moment from 'moment';
 
+import vueFilePond from 'vue-filepond';
+import FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
+import 'filepond/dist/filepond.min.css';
+
+
+const FilePond = vueFilePond(FilePondPluginFileValidateSize);
+
 
 export default {
   components: {
     vSelect,
     QrcodeStream,
-    Datepicker
+    Datepicker,
+    FilePond
   },
   data() {
     return {
@@ -87,7 +105,8 @@ export default {
       scanerInfo: false,
       dates: '',
       summ: '',
-      datepickernew: ''
+      datepickernew: '',
+      myFiles: []
     }
   },
   watch: {
@@ -98,6 +117,11 @@ export default {
     // },
   },
   methods: {
+
+    handleFilePondInit: function() {
+      console.log('FilePond has initialized');
+      // FilePond.registerPlugin(FilePondPluginFileValidateSize);
+    },
 
     customFormatter(date) {
       return moment(date).format('DD-MM-yyy');
@@ -162,5 +186,5 @@ export default {
 </script>
 
 <style lang="scss" type="text/scss">
-  // @import "~@/style/main.scss";
+  
 </style>
