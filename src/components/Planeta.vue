@@ -65,8 +65,8 @@
 
       <div class="planeta-qr__repeat" v-if="repeatscan==true">
         <div class="planeta-qr__scaner">
-          <div class="planeta-qr__scaner-click">
-            <img src="../assets/qr_scan2.png" alt="qr_scan" v-on:click="qrscan">
+          <div class="planeta-qr__scaner-click" v-on:click="scanrepeat">
+            <img src="../assets/qr_scan2.png" alt="qr_scan">
             <p class="planeta-qr__repeat-text1">Не удалось считать QR-код</p>
             <img class="imgrepeat" src="../assets/repeat.png" alt="">
             <p class="planeta-qr__repeat-text2">Повторить</p>
@@ -168,6 +168,7 @@ export default {
       if (content === null) {
          this.decodedContent = "Пусто";
          this.repeatscan = true;
+         this.showScaner = false;
       } else {
         this.decodedContent = promise;
         this.scanerInfo = true;
@@ -187,12 +188,18 @@ export default {
     } catch (error) {
         this.decodedContent = "Ошибка";
         this.repeatscan = true;
+        this.showScaner = false;
       }
     },
 
     qrscan() {
       this.showScaner = true;
     },
+    scanrepeat() {
+      this.showScaner = true;
+      this.repeatscan = false;
+      console.log("повтор")
+    }
   },
   // computed() {
   //   return {
