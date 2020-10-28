@@ -244,6 +244,23 @@ button:active, button:focus { outline: none; }
             }
           }
         }
+        &__repeat {
+          &-text1 {
+            top: 30px !important;
+          }
+          &-text2 {
+            position: absolute;
+            top: auto !important;
+            bottom: 5px;
+          }
+          .imgrepeat {
+            position: absolute;
+            bottom: 45px;
+          }
+          .btn {
+            margin-top: 60px;
+          }
+        }
       }
     }
   }

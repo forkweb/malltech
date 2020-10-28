@@ -9,7 +9,7 @@
       <span class="planeta-qr__market-choose">Магазин покупки*</span>
       <v-select :options="options" :reduce="market => market.id" label="market" placeholder="Выбрать магазин"/>
       
-      <div class="planeta-qr__scaner">
+      <div class="planeta-qr__scaner" v-if="repeatscan==false">
         <div class="planeta-qr__scaner-click" v-if="showScaner==false">
           <img src="../assets/qr_scan.png" alt="qr_scan" v-on:click="qrscan">
           <p>Нажмите для сканирования QR-кода</p>
@@ -22,15 +22,10 @@
               Инициализация...
             </div>
           </qrcode-stream>
-          <!-- <p class="decode-result">Результат: <b>{{ decodedContent }} {{ errorMessage }}</b></p> -->
         </div>
-
       </div>
 
-      <div class="planeta-qr__scaner-information" v-if="scanerInfo==true">
-
-    
-          
+      <div class="planeta-qr__scaner-information" v-if="scanerInfo==true && repeatscan==false">
           <div class="planeta-qr__scaner-information__form">
             <label class="vdp-datepicker-label">Дата покупки*</label>
             <!-- <input class="planeta-input" type="text" :value="dates"> -->
@@ -40,7 +35,7 @@
 
           <div class="planeta-qr__scaner-information__form">
             <label>Сумма покупки*</label>
-            <input class="planeta-input" type="text" :value="summ">
+            <input class="planeta-input" type="number" :value="summ">
           </div>
 
           <div class="planeta-qr__check__upload">
@@ -61,14 +56,30 @@
           </div>
 
           <button class="btn couponregistration">Зарегистрировать купон</button>
-
         </div>
         
 
-      <div class="planeta-qr__control" v-if="showScaner==false">
+      <div class="planeta-qr__control" v-if="showScaner==false && repeatscan==false">
         <button class="btn btn-disable">ВВЕСТИ данные из чека</button>
       </div>
 
+      <div class="planeta-qr__repeat" v-if="repeatscan==true">
+        <div class="planeta-qr__scaner">
+          <div class="planeta-qr__scaner-click">
+            <img src="../assets/qr_scan2.png" alt="qr_scan" v-on:click="qrscan">
+            <p class="planeta-qr__repeat-text1">Не удалось считать QR-код</p>
+            <img class="imgrepeat" src="../assets/repeat.png" alt="">
+            <p class="planeta-qr__repeat-text2">Повторить</p>
+          </div>
+          <div class="planeta-qr__scaner-qrcode">
+            
+          </div>
+        </div>
+        <button class="btn btn-receiptin">ВВЕСТИ данные из чека</button>
+      </div>
+
+      <!-- <p class="decode-result">Результат: <b>{{ decodedContent }} {{ errorMessage }}</b></p> -->
+      
     </div>
 
   </div>
@@ -112,7 +123,8 @@ export default {
       dates: '',
       summ: '',
       datepickernew: '',
-      myFiles: []
+      myFiles: [],
+      repeatscan: false
     }
   },
   watch: {
@@ -155,6 +167,7 @@ export default {
 
       if (content === null) {
          this.decodedContent = "Пусто";
+         this.repeatscan = true;
       } else {
         this.decodedContent = promise;
         this.scanerInfo = true;
@@ -173,6 +186,7 @@ export default {
       }
     } catch (error) {
         this.decodedContent = "Ошибка";
+        this.repeatscan = true;
       }
     },
 
